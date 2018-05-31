@@ -1,15 +1,16 @@
 var Web3 = require("web3");
-
-const testnet = 'https://ropsten.infura.io/';
-const walletAddress = '0x0Ca13c198b796918196A862C521106e2BcB157c3';
+let address = '0x0Ca13c198b796918196A862C521106e2BcB157c3';
 
 if (typeof web3 !== 'undefined') {
-  web3 = new Web3(web3.currentProvider);
+	web3 = new Web3(web3.currentProvider);
 } else {
-  // set the provider you want from Web3.providers
-  web3 = new Web3(new Web3.providers.HttpProvider("http://localhost:8545"));
+	web3 = new Web3(new Web3.providers.HttpProvider("http://localhost:8545"));
 }
 
-var balance = web3.eth.getBalance(walletAddress); //Will give value in.
-console.log(balance);
-//console.log("hi");
+let balance =  web3.eth.getBalance(address, function (error, result) {
+    if (error) {
+        reject(error);
+    } else {
+        console.log('Ether:', web3.utils.fromWei(result,'ether')); 
+    }
+});
