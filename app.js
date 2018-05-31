@@ -9,7 +9,7 @@ if (typeof web3 !== 'undefined') {
 
 let balance =  web3.eth.getBalance(address, function (error, result) {
     if (error) {
-        reject(error);
+    	console.log("Error!");
     } else {
         console.log('Ether:', web3.utils.fromWei(result,'ether')); 
     }
