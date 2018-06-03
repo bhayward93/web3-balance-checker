@@ -1,0 +1,18 @@
+html  
+	head
+	title= header-title
+	body
+	h1= title
+
+	if locals.balance
+		|The address supplied contains 
+		|#{balance}
+		| ETH
+
+		p Enter another address?
+	form(method='POST' action='/')
+		div.form-group
+			label(for='address') Address:
+			input#address.form-control(name="address" type='text')
+		p
+		button.btn.btn-primary(type='submit') Submit
